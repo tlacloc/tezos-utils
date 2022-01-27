@@ -1,0 +1,42 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# node files
+node_modules/
+package-lock.json
+
+# Byte-compiled smarpy files
+compiled/
+tested/
+artifacts/
+test_results/
+
+# deploy
+code/
+storage/
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# dev baks
+*.bak
+
+# images
+media/images/
+media/image/
+media/img*
+
+*.jpg
+*.png
