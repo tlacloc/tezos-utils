@@ -18,5 +18,10 @@
   "bugs": {
     "url": "https://github.com/tlacloc/tezos-utils/issues"
   },
-  "homepage": "https://github.com/tlacloc/tezos-utils#readme"
+  "homepage": "https://github.com/tlacloc/tezos-utils#readme",
+  "dependencies": {
+    "dotenv": "^16.0.0",
+    "fs-extra": "^10.0.0",
+    "prompt-sync": "^4.2.0"
+  }
 }

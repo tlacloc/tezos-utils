@@ -12,6 +12,7 @@ node_modules/
 package-lock.json
 
 # Byte-compiled smarpy files
+build/
 compiled/
 tested/
 artifacts/
