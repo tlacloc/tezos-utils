@@ -26,7 +26,7 @@ async function compileContract ({
   let cmd = ""
   
   if (process.env.COMPILER === 'local') {
-    cmd = `eosio-cpp -abigen -I ./include -contract ${contract} -o ./compiled/${contract}.wasm ${path}`
+    cmd = `~/smartpy-cli/SmartPy.sh compile ${path} build/${contract} --html`
   } else {
 
     cmd = `docker run --rm --name smartpy-cli --volume ${join(__dirname, '../')}:/project -w /project bakingbad/smartpy-cli "compile ${path} build/${contract} --html"`
