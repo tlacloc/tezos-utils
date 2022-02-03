@@ -28,6 +28,14 @@ run `npm install` to install the modules needed for the repo (also if you want, 
 Create test account (if needed) and store the information in scripts/accounts.js.
 Add the name of the smart contract file in scripts/config.js (in `contractsConfig`).
 
+### Other configurations
+
+I highly recommend to create build/ and test_retults/ folders on your main project before running any command of the Commands section, in some cases the ouput files/directories has root permissions, you can fix it by running the following command:
+
+`sudo chmod -R a=wr build/`
+
+Do the same for the test_results
+
 ## Commands
 
 ### Compile contract
