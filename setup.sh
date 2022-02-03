@@ -19,4 +19,20 @@ if [ ! -x "$(command -v docker)" ] ||
     exit
 fi
 
+echo "*** Create ouput folders"
 
+mkdir -p ../build
+
+mkdir -p ../test_results
+
+mkdir -p ../scripts
+
+mkdir -p ../src
+
+mkdir -p ../include
+
+echo "**** Copy scripts"
+
+cp -r scripts/* ../scripts
+
+echo "Project ready to run now!"
