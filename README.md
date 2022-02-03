@@ -8,8 +8,11 @@ Currently it has the following features:
 - Test one or multiple contracts
 
 ## Setup
+This repo is meant to be a submodule for other repos, so to setup the project follow the next commands:
 
-This repo is meant to be a submodule for other repos, so to setup the project follow the next commands.
+You can run the setup.sh file with `sh tezos-utils/setup.sh`
+
+Or you can do it manually by:
 
 - Install docker or smartpy - CLI
 - Install node and npm
