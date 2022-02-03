@@ -10,7 +10,11 @@ Currently it has the following features:
 ## Setup
 This repo is meant to be a submodule for other repos, so to setup the project follow the next commands:
 
-You can run the setup.sh file with `sh tezos-utils/setup.sh`
+You can run the setup.sh file with 
+
+``` bash
+sh tezos-utils/setup.sh
+```
 
 Or you can do it manually by:
 
@@ -18,7 +22,10 @@ Or you can do it manually by:
 - Install node and npm
 
 Clone or cd to your working project and clone this one by running the following command:
-`git submodule add https://github.com/tlacloc/tezos-utils`
+
+``` bash
+git submodule add https://github.com/tlacloc/tezos-utils
+```
 
 - Then copy scripts and src folder to main project folder.
 - Copy package.json and .env.example in main project folder.
@@ -35,7 +42,9 @@ Add the name of the smart contract file in scripts/config.js (in `contractsConfi
 
 I highly recommend to create build/ and test_retults/ folders on your main project before running any command of the Commands section, in some cases the ouput files/directories has root permissions, you can fix it by running the following command:
 
-`sudo chmod -R a=wr build/`
+``` bash
+sudo chmod -R a=wr build/
+```
 
 Do the same for the test_results
 
@@ -45,11 +54,15 @@ Do the same for the test_results
 
 To compile all contracts in `contractsConfig` stored in src/ just run:
 
-`node scripts/commands.js compile`
+``` bash
+node scripts/commands.js compile
+```
 
 To compile a specific contract in `contractsConfig` stored in src/ just run:
 
-`node scripts/commands.js compile $CONTRACT_NAME`
+``` bash
+node scripts/commands.js compile $CONTRACT_NAME
+```
 
 The output of both commands would be stored at build/$CONTRACT_NAME/
 
@@ -57,11 +70,15 @@ The output of both commands would be stored at build/$CONTRACT_NAME/
 
 To test all contracts in `contractsConfig` stored in src/ just run:
 
-`node scripts/commands.js test`
+``` bash
+node scripts/commands.js test
+```
 
 To test a specific contract in `contractsConfig` stored in src/ just run:
 
-`node scripts/commands.js test $CONTRACT_NAME`
+``` bash
+node scripts/commands.js test $CONTRACT_NAME.
+```
 
 The output of both commands would be stored at tests_results/$CONTRACT_NAME/
 
