@@ -35,4 +35,14 @@ echo "**** Copy scripts"
 
 cp -r scripts/* ../scripts
 
+echo "**** Download packages"
+
+cp package.json ../package.json
+
+cp .env.example ../.env
+
+cd ..
+
+npm install
+
 echo "Project ready to run now!"
