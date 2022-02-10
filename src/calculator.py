@@ -58,4 +58,4 @@ if "templates" not in __name__:
         c1.log2(c1.data.value)
         scenario.verify(c1.data.value == 524)
 
-    sp.add_compilation_target("Calculator_comp", Calculator())
+    sp.add_compilation_target("compilation", Calculator())
