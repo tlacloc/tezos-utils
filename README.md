@@ -50,6 +50,8 @@ Do the same for the test_results
 
 ## Commands
 
+Before runing any of these commands, make sure the compilation target name of your smart contract is "compilation", or make a small fix at scripts/compile.js to match your compilation target name
+
 ### Compile contract
 
 To compile all contracts in `contractsConfig` stored in src/ just run:
