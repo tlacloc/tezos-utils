@@ -2,6 +2,7 @@ const { contracts, publicKeys, owner, chain, sleep, isLocalNode } = require('./c
 const { compileContract } = require('./compile')
 const { testContract } = require('./test')
 const { deploy } = require('./deploy')
+const { estimate } = require('./estimate')
 
 const { contract_exists } = require('./utils')
 
@@ -142,7 +143,23 @@ async function deploy_contract ( contractName ) {
 }
 
 
+async function estimate_contract ( contractName ) {
+  // estimate deploy cost of a given contract
+  let contract = contracts.filter(c => c == contractName)
+  if (contract.length > 0) {
+    contract = contract[0]
+  } else {
+    console.log('contract not found')
+    return
+  }
 
+  if (!isLocalNode()) {
+    const option = prompt(`You are about to run a command on ${chain}, are you sure? [y/n] `)
+    if (option.toLowerCase() !== 'y') { return }
+  }
+
+  await estimate( contractName )
+}
 
 
 async function main () {
@@ -177,6 +194,10 @@ async function main () {
 
     case 'deploy':
       await deploy_contract(args[1])
+      break;
+
+    case 'estimate':
+      await estimate_contract(args[1])
       break;
 
 
