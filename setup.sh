@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
+# Author: Erick Casanova <desneruda@gmail.com>
+# date: feb 9, 2022
+
+
+# tips: tz1ZLedXnXnPbk43LD1sHHG3NMXG7ZveZ1jr, paypal.me/tlacloc
+
 echo "=== Start of First Time Setup ==="
 
 # Change to Script's Dir
