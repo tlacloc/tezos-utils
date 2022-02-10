@@ -1,21 +1,17 @@
 require('dotenv').config()
 
-// these accounts are just for testing!
-const ADMIN = {
-  "pkh": "tz...",
-  "secretKey": "edsk..."
-}
+async function contract_exists ( contractName ) {
 
-const userA = {
-  "pkh": "tz...",
-  "secretKey": "edsk..."
-}
-
-const userB = {
-  "pkh": "tz...",
-  "secretKey": "edsk..."
+  let contract = contracts.filter(c => c == contractName)
+  if (contract.length > 0) {
+    contract = contract[0]
+  } else {
+    console.log('contract not found')
+    return
+  }
+  
 }
 
 module.exports = {
-	ADMIN, userA, userB
+	contract_exists
 }
