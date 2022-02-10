@@ -1,10 +1,13 @@
 const { contracts, publicKeys, owner, chain, sleep, isLocalNode } = require('./config')
 const { compileContract } = require('./compile')
 const { testContract } = require('./test')
+const { deploy } = require('./deploy')
 
-const { createAccount, deployContract } = require('./deploy')
+const { contract_exists } = require('./utils')
 
 const prompt = require('prompt-sync')()
+
+
 
 
 async function compile () {
@@ -25,8 +28,8 @@ async function compile () {
 
 
 async function compile_contract ( contractName ) {
+  
   // compile a given contract
-
   let contract = contracts.filter(c => c == contractName)
   if (contract.length > 0) {
     contract = contract[0]
@@ -66,6 +69,7 @@ async function test () {
 
 
 async function test_contract ( contractName ) {
+
   // test a given contract
   let contract = contracts.filter(c => c == contractName)
   if (contract.length > 0) {
@@ -90,8 +94,50 @@ async function test_contract ( contractName ) {
 
 
 
-async function run ( contract ) {
+async function run ( contractName ) {
+
   // compile an deploy a given contract
+  let contract = contracts.filter(c => c == contractName)
+  if (contract.length > 0) {
+    contract = contract[0]
+  } else {
+    console.log('contract not found')
+    return
+  }
+
+  if (!isLocalNode()) {
+    const option = prompt(`You are about to run a command on ${chain}, are you sure? [y/n] `)
+    if (option.toLowerCase() !== 'y') { return }
+  }
+
+  await compile_contract( contractName )
+
+  await deploy( contractName ) 
+
+  
+
+
+
+}
+
+async function deploy_contract ( contractName ) {
+
+  // deploy a given contract
+  let contract = contracts.filter(c => c == contractName)
+  if (contract.length > 0) {
+    contract = contract[0]
+  } else {
+    console.log('contract not found')
+    return
+  }
+
+  if (!isLocalNode()) {
+    const option = prompt(`You are about to run a command on ${chain}, are you sure? [y/n] `)
+    if (option.toLowerCase() !== 'y') { return }
+  }
+
+  await deploy( contractName )
+
 
 }
 
@@ -101,10 +147,6 @@ async function run ( contract ) {
 
 async function main () {
 
-  if (!isLocalNode()) {
-    const option = prompt(`You are about to run a command on ${chain}, are you sure? [y/n] `)
-    if (option.toLowerCase() !== 'y') { return }
-  }
 
   const args = process.argv.slice(2)
 
@@ -132,6 +174,11 @@ async function main () {
       }
 
       break;
+
+    case 'deploy':
+      await deploy_contract(args[1])
+      break;
+
 
     case 'run':
       await run(args[1])
