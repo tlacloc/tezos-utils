@@ -1,6 +1,6 @@
 require('dotenv').config()
 
-const { ADMIN } = require('./utils');
+const { ADMIN } = require('./accounts');
 
 // endpoints
 
@@ -16,7 +16,8 @@ const endpoints = {
 	mainnet: 'https://mainnet.smartpy.io',
 	granadanet: 'https://granadanet.smartpy.io',
 	florencenet: 'https://florencenet.smartpy.io',
-	hangzhounet: 'https://hangzhounet.smartpy.io'
+	hangzhounet: 'https://hangzhounet.smartpy.io',
+	ithacanet: 'https://ithacanet.smartpy.io'
 }
 
 // accounts
@@ -31,6 +32,14 @@ const ownerPublicKeysByChain = {
     	secretKey : ADMIN.secretKey
   	},
   	[supportedChains.florencenet]: {
+		pkh  : ADMIN.pkh,
+    	secretKey : ADMIN.secretKey
+  	},
+  	[supportedChains.hangzhounet]: {
+		pkh  : ADMIN.pkh,
+    	secretKey : ADMIN.secretKey
+  	},
+  	[supportedChains.ithacanet]: {
 		pkh  : ADMIN.pkh,
     	secretKey : ADMIN.secretKey
   	},
