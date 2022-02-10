@@ -19,7 +19,7 @@ async function compile () {
     })
   }))
 
-  console.log('compilation finished\n\n')
+  console.log('Compilation finished!\n\n')
 
 }
 
@@ -42,7 +42,7 @@ async function compile_contract ( contractName ) {
     path: `./src/${contract}.py`      
   })
 
-  console.log('compilation finished\n\n')
+  console.log('Compilation finished!\n\n')
 
 
 }

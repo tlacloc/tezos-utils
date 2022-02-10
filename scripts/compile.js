@@ -39,6 +39,8 @@ async function compileContract ({
     cmd = `docker run --rm --name smartpy-cli --volume ${join(__dirname, '../')}:/project -w /project bakingbad/smartpy-cli "compile ${path} build/${contract} --html"`
     // cmd = `docker run --rm --name bakingbad/smartpy-cli --volume ${join(__dirname, '../')}:/project -w /project bakingbad/smartpy-cli /bin/bash -c "compile ${path} compiled/${contract} --html"`
   }
+
+  console.log("**** compiling contract: " + contract, '\n')
   console.log("compiler command: " + cmd, '\n')
 
   if (!fs.existsSync(compiled)) {
