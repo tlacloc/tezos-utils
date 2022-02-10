@@ -12,7 +12,14 @@ const execCommand = promisify(exec)
 
 async function deleteFile (filePath) {
   if (fs.existsSync(filePath)) {
-    fs.unlinkSync(filePath)
+    fs.rmdir(filePath, { recursive: true }, (err) => {
+      if (err) {
+          throw err;
+      }
+
+      console.log(`${filePath} old files deleted!`, '\n');
+
+    });
   }
 }
 
