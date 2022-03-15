@@ -1,7 +1,5 @@
 require('dotenv').config()
 
-const { ADMIN } = require('./accounts');
-
 // endpoints
 
 const supportedChains = {
@@ -24,24 +22,24 @@ const endpoints = {
 
 const ownerPublicKeysByChain = {
   	[supportedChains.local]: {
-		pkh : ADMIN.pkh,
-    	secretKey : ADMIN.secretKey
+		pkh : process.env.LOCAL_PUBLIC_KEY,
+    	secretKey : process.env.LOCAL_PRIVATE_KEY
   	},
   	[supportedChains.granadanet]: {
-		pkh  : ADMIN.pkh,
-    	secretKey : ADMIN.secretKey
+		pkh  : process.env.GRANADANET_PUBLIC_KEY,
+    	secretKey : process.env.GRANADANET_PRIVATE_KEY
   	},
   	[supportedChains.florencenet]: {
-		pkh  : ADMIN.pkh,
-    	secretKey : ADMIN.secretKey
+		pkh  : process.env.FLORENCENET_PUBLIC_KEY,
+    	secretKey : process.env.FLORENCENET_PRIVATE_KEY
   	},
   	[supportedChains.hangzhounet]: {
-		pkh  : ADMIN.pkh,
-    	secretKey : ADMIN.secretKey
+		pkh  : process.env.HANGZHOUNET_PUBLIC_KEY,
+    	secretKey : process.env.HANGZHOUNET_PRIVATE_KEY
   	},
   	[supportedChains.ithacanet]: {
-		pkh  : ADMIN.pkh,
-    	secretKey : ADMIN.secretKey
+		pkh  : process.env.ITHACANET_PUBLIC_KEY,
+    	secretKey : process.env.ITHACANET_PRIVATE_KEY
   	},
   	[supportedChains.mainnet]: {
 		pkh  : process.env.TEZOS_PUBLIC_KEY,

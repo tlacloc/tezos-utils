@@ -27,8 +27,8 @@ async function deploy (contract) {
     console.log(STORAGE_JSON,'\n');
 
     console.log('***** Deploying contract *****','\n');
-    console.log(`Deploying contract at: ${chain}...`,'\n');
-    console.log(`sign as: ${ownerKeys.pkh}...`,'\n');
+    console.log(`Deploying contract at: ${chain}`,'\n');
+    console.log(`sign as: ${ownerKeys.pkh}`,'\n');
 
     Tezos.contract.originate({
 

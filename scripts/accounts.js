@@ -1,9 +1,11 @@
+/*
+
 require('dotenv').config()
 
 // these accounts are just for testing!!
 const ADMIN = {
-  "pkh": "tz1...",
-  "secretKey": "edsk..."
+  "pkh": process.env.HANGZHOUNET_PUBLIC_KEY,
+  "secretKey": process.env.HANGZHOUNET_PRIVATE_KEY
 }
 
 const userA = {
@@ -17,5 +19,7 @@ const userB = {
 }
 
 module.exports = {
-	ADMIN, userA, userB
+  ADMIN, userA, userB
 }
+
+*/
