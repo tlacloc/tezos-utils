@@ -10,6 +10,14 @@ Currently it has the following features:
 ## Setup
 This repo is meant to be a submodule for other repos, so to setup the project follow the next commands:
 
+Add to the submodule to your repo by running:
+
+
+``` bash
+git submodule add https://github.com/tlacloc/tezos-utils
+```
+
+
 You can run the setup.sh file with 
 
 ``` bash
@@ -20,12 +28,6 @@ Or you can do it manually by:
 
 - Install docker or smartpy - CLI
 - Install node and npm
-
-Clone or cd to your working project and clone this one by running the following command:
-
-``` bash
-git submodule add https://github.com/tlacloc/tezos-utils
-```
 
 - Then copy scripts and src folder to main project folder.
 - Copy package.json and .env.example in main project folder.

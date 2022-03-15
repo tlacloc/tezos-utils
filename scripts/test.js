@@ -47,8 +47,12 @@ async function testContract ({
 
   await deleteFile(join(compiled, `${contract}`))
 
-  await execCommand(cmd)
-  console.log(path)
+  await execCommand(cmd).then(warnings => {
+    console.log(warnings.stdout)
+  })
+  .catch(err => {
+    console.log(err)
+  })
 
 }
 
