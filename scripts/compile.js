@@ -50,10 +50,12 @@ async function compileContract ({
   await deleteFile(join(compiled, `${contract}`))
 
   await execCommand(cmd).then(warnings => {
-    console.log(warnings.stdout)
+    if(warnings.stdout) {console.log(warnings.stdout) }
+    if(warnings.stderr) {console.log(warnings.stderr) }
   })
   .catch(err => {
-    console.log(err)
+    if(err.stdout) {console.log(err.stdout) }
+    if(err.stderr) {console.log(err.stderr) }
   })
 
 }
