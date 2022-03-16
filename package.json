@@ -4,7 +4,12 @@
   "description": "scripts for develop smart contracts in tezos chain using smart-py CLI and taquito",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node scripts/commands.js test",
+    "deploy:local": "PROTOCOL_NAME=local ./scripts/commands.js deploy calculator",
+    "deploy:testnet": "PROTOCOL_NAME=hangzhounet ./scripts/commands.js deploy calculator",
+    "deploy:mainnet": "PROTOCOL_NAME=telosMainnet ./scripts/commands.js deploy calculator",
+    "compile:calculator" :"node scripts/program.js compile calculator",
+    "compile:all" :"node scripts/program.js compile all"
   },
   "repository": {
     "type": "git",
@@ -22,6 +27,7 @@
   "dependencies": {
     "@taquito/signer": "^11.2.0",
     "@taquito/taquito": "^11.2.0",
+    "commander": "^3.0.2",
     "dotenv": "^16.0.0",
     "fs-extra": "^10.0.0",
     "prompt-sync": "^4.2.0",
