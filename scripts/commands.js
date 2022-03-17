@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const { contracts, publicKeys, owner, chain, sleep, isLocalNode } = require('./config')
 const { compileContract } = require('./compile')
 const { testContract } = require('./test')
@@ -16,7 +18,7 @@ async function compile () {
   // compile contracts
   console.log('**** COMPILING CONTRACTS\n')
 
-  await Promise.all(contracts.map(contract => {
+  await Promise.all( contracts.map(contract => {
     return compileContract({
       contract: contract,
       path: `./src/${contract}.py`      
@@ -214,4 +216,12 @@ async function main () {
 
 }
 
-main()
+module.exports = {
+  compile,
+  compile_contract,
+  test_contract,
+  deploy_contract,
+  estimate_contract,
+  run
+
+}

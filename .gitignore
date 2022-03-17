@@ -41,3 +41,6 @@ media/img*
 
 *.jpg
 *.png
+
+# dev stuff
+.vscode/*

@@ -1,3 +1,6 @@
+#!/usr/bin/env node
+
+
 require('dotenv').config()
 
 async function contract_exists ( contractName ) {

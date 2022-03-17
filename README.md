@@ -50,6 +50,8 @@ sudo chmod -R a=wr build/
 
 Do the same for the test_results
 
+Make sure the scripts/tezos-utils.js has executable permissions.
+
 ## Commands
 
 Before runing any of these commands, make sure the compilation target name of your smart contract is "compilation", or make a small fix at scripts/compile.js to match your compilation target name
@@ -59,14 +61,16 @@ Before runing any of these commands, make sure the compilation target name of yo
 To compile all contracts in `contractsConfig` stored in src/ just run:
 
 ``` bash
-node scripts/commands.js compile
+node scripts/tezos-utils.js compile all
 ```
 
 To compile a specific contract in `contractsConfig` stored in src/ just run:
 
 ``` bash
-node scripts/commands.js compile $CONTRACT_NAME
+node scripts/tezos-utils.js compile <contract> <other contracts>
 ```
+
+You can specify as many as you want.
 
 The output of both commands would be stored at build/$CONTRACT_NAME/
 
@@ -75,14 +79,38 @@ The output of both commands would be stored at build/$CONTRACT_NAME/
 To test all contracts in `contractsConfig` stored in src/ just run:
 
 ``` bash
-node scripts/commands.js test
+node scripts/tezos-utils.js test all
 ```
 
 To test a specific contract in `contractsConfig` stored in src/ just run:
 
 ``` bash
-node scripts/commands.js test $CONTRACT_NAME.
+node scripts/tezos-utils.js test <contract> <other contracts>
 ```
+
+You can specify as many as you want.
+
 
 The output of both commands would be stored at tests_results/$CONTRACT_NAME/
 
+
+### Estimate contract deployment cost
+
+
+To estimate the deployment cost a specific contract in `contractsConfig` stored in src/ just run:
+
+``` bash
+node scripts/tezos-utils.js estimate <contract>
+```
+
+note: this action would be sign with the account and chain of the environment variables stored at .env, also would return the actual account balance and the deployment cost.
+### Deploy contract
+
+
+To deploy a specific contract in `contractsConfig` stored in src/ just run:
+
+``` bash
+node scripts/tezos-utils.js deploy <contract>
+```
+
+note: this action would be sign with the account and chain of the environment variables stored at .env

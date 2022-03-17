@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 require('dotenv').config()
 
 const { exec } = require('child_process')
@@ -36,8 +38,8 @@ async function compileContract ({
     cmd = `~/smartpy-cli/SmartPy.sh compile ${path} build/${contract} --html`
   } else {
 
-    cmd = `docker run --rm --name smartpy-cli --volume ${join(__dirname, '../')}:/project -w /project bakingbad/smartpy-cli "compile ${path} build/${contract} --html"`
-    // cmd = `docker run --rm --name bakingbad/smartpy-cli --volume ${join(__dirname, '../')}:/project -w /project bakingbad/smartpy-cli /bin/bash -c "compile ${path} compiled/${contract} --html"`
+    // cmd = `docker run --rm --name smartpy-cli --volume ${join(__dirname, '../')}:/project -w /project desneruda/smartpy-cli:latest "compile ${path} build/${contract} --html"`
+    cmd = `docker run --rm --name smartpy-cli --volume ${join(__dirname, '../')}:/project -w /project desneruda/smartpy-cli "compile ${path} compiled/${contract} --html"`
   }
 
   console.log("**** compiling contract: " + contract, '\n')

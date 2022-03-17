@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 require('dotenv').config()
 
 const { exec } = require('child_process')
@@ -39,7 +41,7 @@ async function testContract ({
     cmd = `docker run --rm --name smartpy-cli --volume ${join(__dirname, '../')}:/project -w /project bakingbad/smartpy-cli "test ${path} test_results/${contract} --html"`
     // cmd = `docker run --rm --name bakingbad/smartpy-cli --volume ${join(__dirname, '../')}:/project -w /project bakingbad/smartpy-cli /bin/bash -c "compile ${path} compiled/${contract} --html"`
   }
-  console.log("compiler command: " + cmd, '\n')
+  console.log("test command: " + cmd, '\n')
 
   if (!fs.existsSync(compiled)) {
     fs.mkdirSync(compiled)
