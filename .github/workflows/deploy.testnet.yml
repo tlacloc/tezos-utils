@@ -29,13 +29,13 @@ jobs:
       - name: Download Smartpy-CLI
         run: echo 'y' | bash <(curl -s https://smartpy.io/cli/install.sh)
 
-      - name: Compile gallery smart contract
+      - name: Compile smart contract
         run: npm run compile:local
 
       - name: List build directory
         run: ls -la build/
 
-      - name: Test gallery smart contract
+      - name: Test smart contract
         run: npm run test:local
 
       - name: Estimate contract deployment cost
