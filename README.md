@@ -114,3 +114,13 @@ node scripts/tezos-utils.js deploy <contract>
 ```
 
 note: this action would be sign with the account and chain of the environment variables stored at .env
+
+## Other features
+
+The project can be used with github workflow, to make it possible, you would need to create an action in github based on the one stored at .github/workflows
+
+What it does it, when there is a push or merge in the dev branch (it can be also configured to mainnet in master branch) the actions installs the app and compiles, tests, estimates and deploy the smart contract into hangzhounet tezos testnet.
+
+If you want to do the same, you need to create the secrets in your repo, there you would need to store your public and private keys (that's why I just use it on testnet) similar as we store them in the .env file.
+
+Then decide what contract you want to run and change the name (currently is the calculator we have for for illustrative purposes only) to the one you stored in the config file. Make sure you have configure the contract to be built in the testnet chain.

@@ -9,9 +9,9 @@ const { TezosToolkit } = require('@taquito/taquito');
 const { InMemorySigner, importKey } = require('@taquito/signer');
 
 const { userA, userB } = require('./utils');
-const { endpoint, ownerKeys, chain } = require('./config');
+const { endpoint, ownerKeys, chain, chain_name } = require('./config');
 
-async function deploy (contract) {
+async function deploy(contract) {
 
     const Tezos = new TezosToolkit('https://api.tez.ie/rpc/delphinet');
 
@@ -22,15 +22,15 @@ async function deploy (contract) {
 
     console.log('***** Contract CODE *****');
     const CODE_JSON = require(`../build/${contract}/compilation/step_000_cont_0_contract.json`);
-    console.log(CODE_JSON,'\n');
+    console.log(CODE_JSON, '\n');
 
     console.log('***** Contract STORAGE *****');
     const STORAGE_JSON = require(`../build/${contract}/compilation/step_000_cont_0_storage.json`);
-    console.log(STORAGE_JSON,'\n');
+    console.log(STORAGE_JSON, '\n');
 
-    console.log('***** Deploying contract *****','\n');
-    console.log(`Deploying contract at: ${chain}`,'\n');
-    console.log(`sign as: ${ownerKeys.pkh}`,'\n');
+    console.log('***** Deploying contract *****', '\n');
+    console.log(`Deploying contract at: ${chain}`, '\n');
+    console.log(`sign as: ${ownerKeys.pkh}`, '\n');
 
     Tezos.contract.originate({
 
@@ -43,10 +43,14 @@ async function deploy (contract) {
 
     }).then(contract => {
         console.log(`Origination completed.`);
-        console.log(`Contract: ${contract.address}`)
-        
+        console.log(`Contract: ${contract.address}`, '\n')
+
+        if (chain_name) {
+            console.log(`https://better-call.dev/${chain_name}/${contract.address}/operations`)
+        }
+
     })
-    .catch(error => console.log(error))
+        .catch(error => console.log(error))
 
 
 }

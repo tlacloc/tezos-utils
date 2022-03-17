@@ -10,7 +10,14 @@ const supportedChains = {
 	mainnet: 'mainnet',
 	granadanet: 'granadanet',
 	florencenet: 'florencenet',
-	hangzhounet: 'hangzhounet'
+	hangzhounet: 'hangzhounet',
+	ithacanet : 'ithacanet'
+}
+
+const better_call_dev_chain_names = {
+	mainnet: 'mainnet',
+	ithacanet: 'ithacanet',
+	hangzhounet: 'hangzhou2net'
 }
 
 const endpoints = {
@@ -66,6 +73,8 @@ const contractsConfig = {
 
 const chain = process.env.PROTOCOL_NAME
 
+const chain_name = better_call_dev_chain_names[chain]
+
 const endpoint = endpoints[chain]
 const ownerKeys = ownerPublicKeysByChain[chain]
 
@@ -78,5 +87,5 @@ function isLocalNode () {
 
 
 module.exports = {
-	endpoint, ownerKeys, chain, isLocalNode, contracts
+	endpoint, ownerKeys, chain, isLocalNode, contracts, chain_name
 }

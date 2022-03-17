@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
-const { contracts, publicKeys, owner, chain, sleep, isLocalNode } = require('./config')
+const { contracts } = require('./config')
 
 const program = require('commander')
-const { compile_contract, test_contract, deploy_contract, estimate_contract, run } = require('./commands')
+const { compile_contract, test_contract, deploy_contract, estimate_contract, deploy_contract_github, estimate_contract_github } = require('./commands')
 
 const batchCallFunc = async (contract, moreContracts, func) => {
 
@@ -80,6 +80,33 @@ program
     console.log('');
     console.log('  $ ./scripts/program.js estimate calculator');
   });
+
+  program
+  .command('estimate_github <contract> [moreContracts...]')
+  .description('Estimate the cost of deployment of a given contract without user prompt')
+  .action(async function (contract, moreContracts) {
+    await batchCallFunc(contract, moreContracts, estimate_contract_github)
+  })
+  .on('--help', () => {
+    console.log('');
+    console.log('Examples:');
+    console.log('');
+    console.log('  $ ./scripts/program.js estimate calculator');
+  });
+
+  program
+  .command('deploy_github <contract> [moreContracts...]')
+  .description('Deploy a given contract without user prompt')
+  .action(async function (contract, moreContracts) {
+    await batchCallFunc(contract, moreContracts, deploy_contract_github)
+  })
+  .on('--help', () => {
+    console.log('');
+    console.log('Examples:');
+    console.log('');
+    console.log('  $ ./scripts/program.js deploy calculator');
+  });
+
 
 program.parse(process.argv)
 
