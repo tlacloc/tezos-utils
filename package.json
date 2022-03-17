@@ -4,12 +4,14 @@
   "description": "scripts for develop smart contracts in tezos chain using smart-py CLI and taquito",
   "main": "index.js",
   "scripts": {
-    "test": "node scripts/commands.js test",
+    "test": "./scripts/commands.js test calculator",
+    "test:local": "PROTOCOL_NAME=hangzhounet COMPILER=local ./scripts/tezos-utils.js test calculator",
     "deploy:local": "PROTOCOL_NAME=local ./scripts/tezos-utils.js deploy calculator",
     "deploy:testnet": "PROTOCOL_NAME=hangzhounet ./scripts/tezos-utils.js deploy calculator",
     "deploy:mainnet": "PROTOCOL_NAME=telosMainnet ./scripts/tezos-utils.js deploy calculator",
     "compile:calculator" :"node scripts/tezos-utils.js compile calculator",
-    "compile:all" :"node scripts/tezos-utils.js compile all"
+    "compile:all" :"node scripts/tezos-utils.js compile all",
+    "compile:local": "PROTOCOL_NAME=hangzhounet COMPILER=local ./scripts/tezos-utils.js compile calculator"
   },
   "repository": {
     "type": "git",
