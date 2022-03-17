@@ -3,12 +3,11 @@
 const { contracts, publicKeys, owner, chain, sleep, isLocalNode } = require('./config')
 
 const program = require('commander')
-const { compile_contract, test_contract, deploy_contract, estimate_contract } = require('./commands')
+const { compile_contract, test_contract, deploy_contract, estimate_contract, run } = require('./commands')
 
 const batchCallFunc = async (contract, moreContracts, func) => {
 
   if (contract != 'all') {
-
     await func(contract)
 
     if (moreContracts.length) {
@@ -35,6 +34,12 @@ program
   .action(async function (contract, moreContracts) {
     await batchCallFunc(contract, moreContracts, compile_contract)
   })
+  .on('--help', () => {
+    console.log('');
+    console.log('Examples:');
+    console.log('');
+    console.log('  $ ./scripts/program.js compile calculator');
+  });
 
 program
   .command('deploy <contract> [moreContracts...]')
@@ -42,6 +47,12 @@ program
   .action(async function (contract, moreContracts) {
     await batchCallFunc(contract, moreContracts, deploy_contract)
   })
+  .on('--help', () => {
+    console.log('');
+    console.log('Examples:');
+    console.log('');
+    console.log('  $ ./scripts/program.js deploy calculator');
+  });
 
 program
   .command('test <contract> [moreContracts...]')
@@ -49,6 +60,13 @@ program
   .action(async function (contract, moreContracts) {
     await batchCallFunc(contract, moreContracts, test_contract)
   })
+  .on('--help', () => {
+    console.log('');
+    console.log('Examples:');
+    console.log('');
+    console.log('  $ ./scripts/program.js test calculator');
+  });
+
 
 program
   .command('estimate <contract> [moreContracts...]')
@@ -56,7 +74,12 @@ program
   .action(async function (contract, moreContracts) {
     await batchCallFunc(contract, moreContracts, estimate_contract)
   })
-
+  .on('--help', () => {
+    console.log('');
+    console.log('Examples:');
+    console.log('');
+    console.log('  $ ./scripts/program.js estimate calculator');
+  });
 
 program.parse(process.argv)
 
