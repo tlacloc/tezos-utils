@@ -216,8 +216,6 @@ async function main () {
 
 }
 
-main()
-
 module.exports = {
   compile,
   compile_contract,
