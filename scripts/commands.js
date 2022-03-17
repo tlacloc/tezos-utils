@@ -144,6 +144,21 @@ async function deploy_contract ( contractName ) {
 
 }
 
+async function deploy_contract_github ( contractName ) {
+
+  // deploy a given contract
+  let contract = contracts.filter(c => c == contractName)
+  if (contract.length > 0) {
+    contract = contract[0]
+  } else {
+    console.log('contract not found')
+    return
+  }
+
+  await deploy( contractName )
+
+
+}
 
 async function estimate_contract ( contractName ) {
   // estimate deploy cost of a given contract
@@ -163,6 +178,18 @@ async function estimate_contract ( contractName ) {
   await estimate( contractName )
 }
 
+async function estimate_contract_github ( contractName ) {
+  // estimate deploy cost of a given contract
+  let contract = contracts.filter(c => c == contractName)
+  if (contract.length > 0) {
+    contract = contract[0]
+  } else {
+    console.log('contract not found')
+    return
+  }
+
+  await estimate( contractName )
+}
 
 async function main () {
 
@@ -221,7 +248,9 @@ module.exports = {
   compile_contract,
   test_contract,
   deploy_contract,
+  deploy_contract_github,
   estimate_contract,
+  estimate_contract_github,
   run
 
 }
