@@ -1,8 +1,8 @@
-name: DEPLOYMENT TO TEZOS TESTNET CI
+name: TEST SMART CONTRACT COMPILATION CI
 
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
-  push:
+  pull_request:
     branches: [ dev ]
 
   # Allows you to run this workflow manually from the Actions tab
@@ -35,10 +35,3 @@ jobs:
 
       - name: Test smart contract
         run: npm run test:local
-
-      - name: Estimate contract deployment cost
-        run: PROTOCOL_NAME=hangzhounet HANGZHOUNET_PUBLIC_KEY=${{secrets.HANGZHOUNET_PUBLIC_KEY}} HANGZHOUNET_PRIVATE_KEY=${{secrets.HANGZHOUNET_PRIVATE_KEY}} ./scripts/tezos-utils.js estimate_github calculator
-
-      - name: Deploy contract to hangzhounet testnet
-        run: PROTOCOL_NAME=hangzhounet HANGZHOUNET_PUBLIC_KEY=${{secrets.HANGZHOUNET_PUBLIC_KEY}} HANGZHOUNET_PRIVATE_KEY=${{secrets.HANGZHOUNET_PRIVATE_KEY}} ./scripts/tezos-utils.js deploy_github calculator
-

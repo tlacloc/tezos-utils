@@ -7,6 +7,8 @@ const { deploy } = require('./deploy')
 const { estimate } = require('./estimate')
 
 const { contract_exists } = require('./utils')
+const { warnings, errors, success, start, finish, flag } = require('./ui')
+
 
 const prompt = require('prompt-sync')()
 
@@ -16,7 +18,7 @@ const prompt = require('prompt-sync')()
 async function compile () {
 
   // compile contracts
-  console.log('**** COMPILING CONTRACTS\n')
+  console.log('**** COMPILING CONTRACTS')
 
   await Promise.all( contracts.map(contract => {
     return compileContract({
@@ -25,7 +27,7 @@ async function compile () {
     })
   }))
 
-  console.log('Compilation finished!\n\n')
+  finish('Compilation finished!')
 
 }
 
@@ -37,18 +39,16 @@ async function compile_contract ( contractName ) {
   if (contract.length > 0) {
     contract = contract[0]
   } else {
-    console.log('contract not found')
+    errors(`${contractName} contract not defined for ${chain}\n   Is it defined in config.js?`)
     return
   }
-
-  console.log(`COMPILING CONTRACT ${contractName}`)
 
   await compileContract({
     contract: contract,
     path: `./src/${contract}.py`      
   })
 
-  console.log('Compilation finished!\n\n')
+  finish('Compilation finished!')
 
 
 }
@@ -66,7 +66,7 @@ async function test () {
     })
   }))
 
-  console.log('testing finished\n\n')
+  finish('testing finished')
 
 }
 
@@ -78,18 +78,16 @@ async function test_contract ( contractName ) {
   if (contract.length > 0) {
     contract = contract[0]
   } else {
-    console.log('contract not found')
+    errors(`${contractName} contract not defined for ${chain}\n   Is it defined in config.js?`)
     return
   }
-
-  console.log(`TESTING CONTRACT ${contractName}`)
 
   await testContract({
     contract: contract,
     path: `./src/${contract}.py`      
   })
 
-  console.log('testing finished\n\n')
+  finish('testing finished')
 
 
 }
@@ -104,7 +102,7 @@ async function run ( contractName ) {
   if (contract.length > 0) {
     contract = contract[0]
   } else {
-    console.log('contract not found')
+    errors(`${contractName} contract not defined for ${chain}\n   Is it defined in config.js?`)
     return
   }
 
@@ -119,7 +117,7 @@ async function run ( contractName ) {
 
   
 
-
+  finish("Deployment completed!")
 
 }
 
@@ -130,7 +128,7 @@ async function deploy_contract ( contractName ) {
   if (contract.length > 0) {
     contract = contract[0]
   } else {
-    console.log('contract not found')
+    errors(`${contractName} contract not defined for ${chain}\n   Is it defined in config.js?`)
     return
   }
 
@@ -140,6 +138,8 @@ async function deploy_contract ( contractName ) {
   }
 
   await deploy( contractName )
+
+  finish("Deployment completed!")
 
 
 }
@@ -151,11 +151,13 @@ async function deploy_contract_github ( contractName ) {
   if (contract.length > 0) {
     contract = contract[0]
   } else {
-    console.log('contract not found')
+    errors(`${contractName} contract not defined for ${chain}\n   Is it defined in config.js?`)
     return
   }
 
   await deploy( contractName )
+
+  finish("Deployment completed!")
 
 
 }
@@ -166,7 +168,7 @@ async function estimate_contract ( contractName ) {
   if (contract.length > 0) {
     contract = contract[0]
   } else {
-    console.log('contract not found')
+    errors(`${contractName} contract not defined for ${chain}\n   Is it defined in config.js?`)
     return
   }
 
@@ -176,6 +178,8 @@ async function estimate_contract ( contractName ) {
   }
 
   await estimate( contractName )
+
+  finish("Estimation completed!")
 }
 
 async function estimate_contract_github ( contractName ) {
@@ -184,11 +188,14 @@ async function estimate_contract_github ( contractName ) {
   if (contract.length > 0) {
     contract = contract[0]
   } else {
-    console.log('contract not found')
+    errors(`${contractName} contract not defined for ${chain}\n   Is it defined in config.js?`)
     return
   }
 
   await estimate( contractName )
+
+  finish("Estimation completed!")
+
 }
 
 async function main () {
@@ -236,7 +243,7 @@ async function main () {
 
 
     default:
-      console.log('Invalid input.')
+      errors('Invalid input.')
       break;
 
   } 

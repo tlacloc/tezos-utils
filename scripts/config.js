@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 
-
 require('dotenv').config()
 
 // endpoints
@@ -14,7 +13,7 @@ const supportedChains = {
 	ithacanet : 'ithacanet'
 }
 
-const better_call_dev_chain_names = {
+const networkDisplayName = {
 	mainnet: 'mainnet',
 	ithacanet: 'ithacanet',
 	hangzhounet: 'hangzhou2net'
@@ -59,6 +58,8 @@ const ownerPublicKeysByChain = {
 
 // contracts
 
+// MODIFY THIS PART TO MATCH YOUR CONTRACT NAME
+
 const contractsConfig = {
   [supportedChains.local]: [
     'calculator'
@@ -73,7 +74,7 @@ const contractsConfig = {
 
 const chain = process.env.PROTOCOL_NAME
 
-const chain_name = better_call_dev_chain_names[chain]
+const chain_name = networkDisplayName[chain]
 
 const endpoint = endpoints[chain]
 const ownerKeys = ownerPublicKeysByChain[chain]
