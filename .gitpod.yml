@@ -1,8 +1,12 @@
 # List the start up tasks. Learn more https://www.gitpod.io/docs/config-start-tasks/
 tasks:
-  - name: Set up working space
-    init: echo 'y' | bash <(curl -s https://smartpy.io/cli/install.sh)
-    command: npm install
+  - name    : Installing Smartpy
+    command : echo 'y' | bash <(curl -s https://smartpy.io/cli/install.sh)
+    
+  - name     : nodejs libraries
+    init     : npm install
+    command  : npm run test:local
+    openMode : split-right
 
 # List the ports to expose. Learn more https://www.gitpod.io/docs/config-ports/
 ports:
