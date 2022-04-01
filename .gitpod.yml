@@ -4,8 +4,7 @@ tasks:
     command : echo 'y' | bash <(curl -s https://smartpy.io/cli/install.sh)
     
   - name     : nodejs libraries
-    init     : npm install
-    command  : npm run test:local
+    command  : npm install
     openMode : split-right
 
 # List the ports to expose. Learn more https://www.gitpod.io/docs/config-ports/
